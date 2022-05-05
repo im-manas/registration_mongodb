@@ -1,0 +1,48 @@
+<%-include('../Includes/header.ejs')%>
+</head>
+<body>
+    <%-include('../Includes/navigation.ejs')%>
+<br>
+<%if(data.length>0){%>
+    <br>
+<div class="container">
+    <form class="container d-flex" action="/search" method="post" style="width: 300px;">
+        <input class="form-control me-2" type="text" name="search" placeholder="Search" required>
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+      <br>
+    <div class="container">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">City</th>
+              <th scope="col">Pin</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <%for(let x of data){%>
+              <tr>
+                  <th><%=x.f_name%></th>
+                  <th><%=x.l_name%></th> 
+                  <th><%=x.city%></th>
+                  <th><%=x.pin%></th>
+                  <th><%=x.phone%></th>
+                  <th><%=x.email%></th>
+                  <th><%=x.password%></th>
+                   
+              <%}%>
+          </tbody>
+        </table>
+        <%}else{%>
+          <h1 style="text-align: center;">Data Not Found.</h1>
+      <%}%>
+    </div>
+
+
+    <%-include('../Includes/footer.ejs')%>
